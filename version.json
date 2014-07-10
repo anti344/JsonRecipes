@@ -2,33 +2,23 @@
     "versionList":[
         {
             "mcVersion":"Minecraft 1.7.10",
-            "modVersion":"2.0.1",
+            "modVersion":"1.0.0",
             "changeLog":[
-                "Updated to Minecraft 1.7.10",
-                "Implemented Forge Config GUI(change configs from the game!)",
-                "",
-                "Furnace recipes now work with OreDictionary",
-                "Finally working version checker",
-                "Fixed one bug with not-dynamic recipes(all vanilla recipes are dynamic =P)"
+                "First release!"
             ],
-            "updateURL":"https://github.com/anti344/CustomRecipes/releases/download/v2.0.1/CustomRecipes-2.0.1-universal.jar",
+            "updateURL":"https://github.com/anti344/JsonRecipes/releases/download/v1.0.0/JsonRecipes-1.0.0-universal.jar",
             "isDirectLink":"true",
-            "newFileName":"CustomRecipes-2.0.1-universal.jar"
+            "newFileName":"JsonRecipes-1.0.0-universal.jar"
         },
         {
             "mcVersion":"Minecraft 1.7.2",
-            "modVersion":"2.0.0",
+            "modVersion":"1.0.0",
             "changeLog":[
-                "Fixed tonns(now real tonns) of bugs",
-                "Rewrited a lot of internal stuff(much better decoding)",
-                "Completely new API",
-                "A little change of syntax",
-                "New version checker(And support to Version Checker mod)",
-                "Furnace fuel"
+                "First release!"
             ],
-            "updateURL":"https://github.com/anti344/CustomRecipes/releases/download/v2.0.0/CustomRecipes-2.0.0-universal.jar",
+            "updateURL":"https://github.com/anti344/JsonRecipes/releases/download/v1.0.0/JsonRecipes-1.0.0-universal.jar",
             "isDirectLink":"true",
-            "newFileName":"CustomRecipes-2.0.0-universal.jar"
+            "newFileName":"JsonRecipes-1.0.0-universal.jar"
         }
     ]
 }
