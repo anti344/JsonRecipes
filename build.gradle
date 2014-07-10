@@ -1,0 +1,83 @@
+buildscript{
+    repositories{
+        mavenCentral()
+        maven{
+            name = 'forge'
+            url = 'http://files.minecraftforge.net/maven'
+        }
+        maven{
+            name = 'sonatype'
+            url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+    }
+    file('config.properties').withReader{
+        def prop = new Properties()
+        prop.load(it)
+        project.ext.config = new ConfigSlurper().parse(prop)
+    }
+    dependencies{
+        classpath "net.minecraftforge.gradle:ForgeGradle:${config.forge_gradle_version}"
+    }
+}
+
+apply plugin: 'scala'
+apply plugin: 'forge'
+
+version = config.mod_version
+group = 'net.anti44.customrecipes'
+archivesBaseName = 'JsonRecipes'
+
+minecraft{
+    version = config.minecraft_version + '-' + config.forge_version
+    assetDir = '.minecraft/assets'
+    replace '@VERSION@' : project.version
+}
+
+jar{
+    classifier = 'universal'
+    from sourceSets.api.output
+    manifest.attributes('Created-By' : 'anti344')
+}
+
+task srcJar(type: Jar) {
+    from sourceSets.main.allSource
+    from sourceSets.api.allSource
+    classifier = 'sources'
+    manifest.attributes('Created-By' : 'anti344')
+}
+
+task devJar(type: Jar) {
+    from sourceSets.main.output
+    from sourceSets.api.output
+    classifier = 'dev'
+    manifest.attributes('Created-By' : 'anti344')
+}
+
+task apiJar(type: Jar) {
+    from sourceSets.api.output
+    classifier = 'api'
+    manifest.attributes('Created-By' : 'anti344')
+}
+
+build.dependsOn srcJar, devJar, apiJar
+
+artifacts{
+    archives(srcJar)
+    archives(devJar)
+    archives(apiJar)
+}
+
+processResources{
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
+    from(sourceSets.main.resources.srcDirs){
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs){
+        exclude 'mcmod.info'
+    }
+    from('/'){
+        include 'COPYING', 'COPYING.LESSER'
+    }
+}

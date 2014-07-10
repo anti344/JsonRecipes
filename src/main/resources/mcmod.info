@@ -1,0 +1,14 @@
+[{
+  "modid": "JsonRecipes",
+  "name": "Json Recipes",
+  "description": "Use JSON format(which is used everywhere in Minecraft) to add your own crafting recipes!\n With NBT, OreDictionary and machines other mods support!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["anti344"],
+  "credits": "Created by anti344",
+  "logoFile": "assets/jsonrecipes/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}]

@@ -1,0 +1,13 @@
+#IntelliJ project files
+.idea
+*.iml
+*.iws
+*.ipr
+
+#Gradle stuff
+.gradle
+build
+
+#IDE compiler output
+.minecraft
+.minecraft_server
