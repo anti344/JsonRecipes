@@ -29,7 +29,7 @@ archivesBaseName = 'JsonRecipes'
 
 minecraft{
     version = config.minecraft_version + '-' + config.forge_version
-    assetDir = '.minecraft/assets'
+    runDir = '.minecraft/assets'
     replace '@VERSION@' : project.version
 }
 
