@@ -29,8 +29,7 @@ object Log{
     log(Level.INFO, obj)
 
   def debug(obj: AnyRef) =
-//    log(Level.DEBUG, obj)
-    println(String.valueOf(obj))
+    log(Level.DEBUG, obj)
 
   def trace(obj: AnyRef) =
     log(Level.TRACE, obj)
