@@ -20,12 +20,14 @@ import io.netty.channel._
 
 object PacketManager{
 
-  registerPacket[PacketRecipe](0)
-  registerPacket[PacketRemoveRecipes](1)
+  registerPacket[PacketRecipe]
+  registerPacket[PacketRemoveRecipes]
 
   private val target = FMLOutboundHandler.FML_MESSAGETARGET
   private val args = FMLOutboundHandler.FML_MESSAGETARGETARGS
   private val fireExc = ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE
+
+  private var packetID: Int = 0
 
   var server: FMLEmbeddedChannel = null
   var client: FMLEmbeddedChannel = null
@@ -39,8 +41,10 @@ object PacketManager{
     server.pipeline.addAfter(server.findChannelHandlerNameForType(tpe), "executor", new PacketHandler(Side.SERVER))
   }
 
-  def registerPacket[T <: Packet : ClassTag](id: Int) =
-    PacketCodec.addDiscriminator(id, classTag[T].runtimeClass.asInstanceOf[Class[T]])
+  def registerPacket[T <: Packet : ClassTag] = {
+    PacketCodec.addDiscriminator(packetID, classTag[T].runtimeClass.asInstanceOf[Class[_ <: Packet]])
+    packetID += 1
+  }
 
   def getPacketFrom(packet: Packet): MCPacket =
     server.generatePacketFrom(packet)
