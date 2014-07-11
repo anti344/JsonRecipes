@@ -31,8 +31,8 @@ object VersionChecker{
         if(raw != null){
           new Gson().fromJson(raw, classOf[VersionList]).versionList
            .find(_.mcVersion == "Minecraft " + mcVersion)match{
-            case Some(v) if v.modVersion != version =>
-              v.modVersion
+            case Some(VersionEntry(_, v)) if v != version =>
+              v
             case _ =>
               null
           }
