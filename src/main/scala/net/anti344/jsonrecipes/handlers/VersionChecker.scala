@@ -40,7 +40,7 @@ object VersionChecker{
       }onComplete{
         case Success(latest) =>
           if(latest != null && Config.checkVersion.getBoolean)
-            MessageHandler.msg(new ChatComponentTranslation("cr.checker.msg", latest, mcVersion))
+            MessageHandler.msg(new ChatComponentTranslation("jrecipes.checker.msg", latest, mcVersion))
           Log.debug(s"Current mod version $version, latest for MC $mcVersion - $latest, new version avaible.")
         case Failure(exc) =>
           Log.info("Failed to check version, probably you don't have an internet connection.")

@@ -1,17 +1,17 @@
-cr.checker.msg=Version %s of Json Recipes is available for Minecraft %s!
+jrecipes.checker.msg=Version %s of Json Recipes is available for Minecraft %s!
 
-cr.error.type=Type '%s' does not exist! All recipes with this type skipped.
-cr.error.remove=Failed to remove dynamic recipes with type '%s'.
-cr.error.load=Failed to load recipe with type '%s'.
-cr.error.remove=Failed to remove recipe with type '%s'.
-cr.error.aliases=Failed to load aliases file.
+jrecipes.error.type=Type '%s' does not exist! All recipes with this type skipped.
+jrecipes.error.remove=Failed to remove dynamic recipes with type '%s'.
+jrecipes.error.load=Failed to load recipe with type '%s'.
+jrecipes.error.remove=Failed to remove recipe with type '%s'.
+jrecipes.error.aliases=Failed to load aliases file.
 
-cr.reload.usage=/reloadRecipes
-cr.reload.success=Recipe list was successfully reloaded.
-cr.reload.failture=Some of the recipes wasn't loaded properly.
+jrecipes.reload.usage=/reloadRecipes
+jrecipes.reload.success=Recipe list was successfully reloaded.
+jrecipes.reload.failture=Some of the recipes wasn't loaded properly.
 
-cr.config=Json Recipes Configuration
-cr.config.checker=Version Check
-cr.config.checker.tooltip=Json Recipes will try to fetch latest version of the mod for this version of Minecraft and say in chat if new version is avaible.
-cr.config.output=Print errors in chat
-cr.config.output.tooltip=Any JSON parsing error will be printed to ingame chat. Useful for recipe makers.
+jrecipes.config=Json Recipes Configuration
+jrecipes.config.checker=Version Check
+jrecipes.config.checker.tooltip=Json Recipes will try to fetch latest version of the mod for this version of Minecraft and say in chat if new version is avaible.
+jrecipes.config.output=Print errors in chat
+jrecipes.config.output.tooltip=Any JSON parsing error will be printed to ingame chat. Useful for recipe makers.

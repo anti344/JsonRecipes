@@ -46,7 +46,7 @@ object Parser{
     val failedRemoving = ArrayBuffer[String]()
     loadedRecipes.foreach{r =>
       if(!r._3.removeRecipe(r._2) && !failedRemoving.contains(r._1)){
-        MessageHandler.error(format("cr.error.remove", r._1))
+        MessageHandler.error(format("jrecipes.error.remove", r._1))
         failedRemoving += r._1
       }
     }
@@ -88,10 +88,10 @@ object Parser{
               loadedRecipes += ((tpe, recipe, handler))
               Log.debug(s"Successfully parsed recipe with type '$tpe'!")
             }else
-              MessageHandler.error(format(s"cr.error.load", tpe))
+              MessageHandler.error(format(s"jrecipes.error.load", tpe))
           true
         }else if(!failedTypes.contains(tpe)){
-          MessageHandler.error(format("cr.error.type", tpe))
+          MessageHandler.error(format("jrecipes.error.type", tpe))
           failedTypes += tpe
           false
         }else

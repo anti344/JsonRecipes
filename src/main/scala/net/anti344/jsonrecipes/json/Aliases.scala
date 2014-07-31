@@ -20,7 +20,7 @@ object Aliases{
     val temp = new File(Parser.recipeDir, "aliases.json")
     if(!temp.exists()){
       val writer = new FileWriter(temp)
-      writer.append("{\n  item:{\n    \n  },\n  fluid:{\n    \n  },\n  type:{\n    \n  }\n}")
+      writer.append("{\n  \"item\":{\n    \n  },\n  \"fluid\":{\n    \n  },\n  \"type\":{\n    \n  }\n}")
       writer.flush()
       writer.close()
     }
@@ -39,7 +39,7 @@ object Aliases{
       types = aliases.`type`
     }catch{
       case e: Exception =>
-        MessageHandler.error("cr.error.aliases")
+        MessageHandler.error("jrecipes.error.aliases")
     }
 
   private case class Holder(item: JMap[String, JsonItemStack], fluid: JMap[String, JsonFluidStack], `type`: JMap[String, String])

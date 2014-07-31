@@ -36,11 +36,11 @@ object Config{
   private def load() = {
     try{
       checkVersion =
-        main.get("RUNTIME", "version_checker", true, StatCollector.translateToLocal("cr.config.checker.tooltip"))
-        .setLanguageKey("cr.config.checker")
+        main.get("RUNTIME", "version_checker", true, StatCollector.translateToLocal("jrecipes.config.checker.tooltip"))
+        .setLanguageKey("jrecipes.config.checker")
       errorOutput =
-        main.get("RUNTIME", "chat_output", false, StatCollector.translateToLocal("cr.config.output.tooltip"))
-        .setLanguageKey("cr.config.output")
+        main.get("RUNTIME", "chat_output", false, StatCollector.translateToLocal("jrecipes.config.output.tooltip"))
+        .setLanguageKey("jrecipes.config.output")
     }catch{
       case e: RuntimeException =>
         Log.error(e)

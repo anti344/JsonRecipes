@@ -17,4 +17,4 @@ import scala.collection.JavaConversions.seqAsJavaList
 class ConfigGui(parent: GuiScreen)
  extends GuiConfig(parent,
    Seq(Config.checkVersion, Config.errorOutput).map(new ConfigElement(_)),
-   JsonRecipes.modid, false, false, I18n.format("cr.config"))
+   JsonRecipes.modid, false, false, I18n.format("jrecipes.config"))

@@ -16,15 +16,15 @@ object ReloadRecipesCommand
 
   def processCommand(ics: ICommandSender, args: Array[String]) =
     if(Parser.load())
-      ics.addChatMessage(new ChatComponentTranslation("cr.reload.success"))
+      ics.addChatMessage(new ChatComponentTranslation("jrecipes.reload.success"))
     else
-      ics.addChatMessage(new ChatComponentTranslation("cr.reload.failture"))
+      ics.addChatMessage(new ChatComponentTranslation("jrecipes.reload.failture"))
 
   def getCommandName: String =
     "reloadRecipes"
 
   def getCommandUsage(ics: ICommandSender): String =
-    "cr.reload.usage"
+    "jrecipes.reload.usage"
 
   override def getRequiredPermissionLevel: Int =
     2
