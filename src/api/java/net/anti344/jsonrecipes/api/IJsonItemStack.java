@@ -21,7 +21,7 @@ public interface IJsonItemStack{
     String getName();
 
     /**
-      * @return A boolean fron 'oredict' JSON field.
+      * @return A boolean from 'oredict' JSON field.
       */
     boolean isOredict();
 

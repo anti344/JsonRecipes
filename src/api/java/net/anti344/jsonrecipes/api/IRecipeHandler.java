@@ -22,7 +22,7 @@ public interface IRecipeHandler<T>{
     /**
       * Instance of your class-holder is the same as in {@link #addRecipe}, so you can map it with actual recipe to remove it from recipe-list.
       * See my minecraft implementation here:
-      * https://github.com/anti344/JsonRecipes/tree/master/src/main/scala/net/anti344/jsonrecipes/plugins/minecraft/ShapelessHandler.scala#L37.
+      * https://github.com/anti344/JsonRecipes/tree/master/src/main/scala/net/anti344/jsonrecipes/plugins/minecraft/ShapelessHandler.scala#L37
       *
       * @param recipe Instance of your class-holder parsed from Json using Google Gson library.
       * @return Success of removing recipe. If <code>false</code> returned chat error will occur(if enabled).
