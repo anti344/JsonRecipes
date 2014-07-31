@@ -41,9 +41,9 @@ object FurnaceHandler
     if(recipe.output.exists){
       val out = recipe.output.getItemStack
       var in: Seq[ItemStack] = Seq()
-      if(recipe.output.exists)
+      if(recipe.input.exists)
         in = Seq(recipe.input.getItemStack)
-      else if(recipe.output.oredict)
+      else if(recipe.input.oredict)
         in = OreDictionary.getOres(recipe.input.item)
       else
         return false
