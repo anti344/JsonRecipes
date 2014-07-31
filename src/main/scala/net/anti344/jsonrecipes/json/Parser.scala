@@ -54,6 +54,7 @@ object Parser{
     if(FMLCommonHandler.instance.getSide.isServer){
       val pkt = new PacketRemoveRecipes
       PacketManager.sendToAll(pkt)
+      RecipeSyncHandler.clearQueue()
     }
   }
 
