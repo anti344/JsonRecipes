@@ -7,6 +7,7 @@
 
 package net.anti344.jsonrecipes.json
 
+import com.google.gson.reflect.TypeToken
 import net.anti344.jsonrecipes.api.{IJsonItemStack, IJsonFluidStack}
 import net.anti344.jsonrecipes.impl.{JsonItemStack, JsonFluidStack}
 import net.minecraft.nbt.{NBTBase, JsonToNBT}
@@ -23,12 +24,12 @@ object Deserializers{
     .registerTypeHierarchyAdapter(classOf[NBTBase], NBTJsonDeserializer)
     .create()
 
-  private val nbt: Gson = new GsonBuilder()
+  private val withNBT: Gson = new GsonBuilder()
     .registerTypeHierarchyAdapter(classOf[NBTBase], NBTJsonDeserializer)
     .create()
 
   private object NBTJsonDeserializer
-    extends JsonDeserializer[NBTBase]{
+   extends JsonDeserializer[NBTBase]{
 
     @throws[JsonParseException]
     def deserialize(json: JsonElement, tpe: Type, ctx: JsonDeserializationContext): NBTBase =
@@ -36,7 +37,7 @@ object Deserializers{
   }
 
   private object JsonItemStackDeserilizer
-    extends JsonDeserializer[IJsonItemStack]{
+   extends JsonDeserializer[IJsonItemStack]{
 
     @throws[JsonParseException]
     def deserialize(json: JsonElement, tpe: Type, ctx: JsonDeserializationContext): IJsonItemStack =
@@ -46,14 +47,14 @@ object Deserializers{
           if(Aliases.items.contains(str))
             Aliases.items(str)
           else
-            new JsonItemStack(str)
+            new JsonItemStack(str, false, 1, 0, null)
         case _ =>
-          nbt.fromJson(json, tpe)
+          withNBT.fromJson(json, tpe)
       }
   }
 
   private object JsonFluidStackDeserilizer
-    extends JsonDeserializer[IJsonFluidStack]{
+   extends JsonDeserializer[IJsonFluidStack]{
 
     @throws[JsonParseException]
     def deserialize(json: JsonElement, tpe: Type, ctx: JsonDeserializationContext): IJsonFluidStack =
@@ -63,9 +64,9 @@ object Deserializers{
           if(Aliases.fluids.contains(str))
             Aliases.fluids(str)
           else
-            new JsonFluidStack(str)
+            new JsonFluidStack(str, 0, null)
         case _ =>
-          nbt.fromJson(json, tpe)
+          withNBT.fromJson(json, tpe)
       }
   }
 }

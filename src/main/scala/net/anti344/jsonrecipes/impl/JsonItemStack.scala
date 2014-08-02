@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.oredict.OreDictionary
 
-case class JsonItemStack(item: String, oredict: Boolean = false, count: Int = 1, meta: Int = 0, nbt: NBTTagCompound = null)
+class JsonItemStack(item: String, oredict: Boolean, count: Int, meta: Int, nbt: NBTTagCompound)
  extends IJsonItemStack{
 
   def getName: String =
@@ -43,20 +43,16 @@ case class JsonItemStack(item: String, oredict: Boolean = false, count: Int = 1,
     !oredict && GameData.getItemRegistry.containsKey(item)
 
   def getComponent: AnyRef =
-    if(!oredict){
-      val itm = GameData.getItemRegistry.getObject(item)
-      if(itm != null){
-        val is = new ItemStack(itm, getCount, getMeta)
-        is.setTagCompound(nbt)
-        is
-      }else
-        null
+    if(exists){
+      getItemStack
     }else
       item
 
   def getItemStack: ItemStack =
     if(exists){
-      getComponent.asInstanceOf[ItemStack]
+      val is = new ItemStack(GameData.getItemRegistry.getObject(item), getCount, getMeta)
+      is.setTagCompound(nbt)
+      is
     }else
       null
 }

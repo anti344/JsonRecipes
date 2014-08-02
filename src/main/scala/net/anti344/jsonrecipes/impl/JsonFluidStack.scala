@@ -9,16 +9,18 @@ package net.anti344.jsonrecipes.impl
 
 import net.anti344.jsonrecipes.api.IJsonFluidStack
 import net.minecraft.nbt.NBTTagCompound
-import net.minecraftforge.fluids.{FluidContainerRegistry, FluidRegistry, FluidStack}
+import net.minecraftforge.fluids._
 
-case class JsonFluidStack(fluid: String, amount: Int = FluidContainerRegistry.BUCKET_VOLUME, nbt: NBTTagCompound = null)
+class JsonFluidStack(fluid: String, amount: Int, nbt: NBTTagCompound)
  extends IJsonFluidStack{
 
   def getName: String =
     fluid
 
   def getAmount: Int =
-    amount
+    if(amount <= 0)
+      FluidContainerRegistry.BUCKET_VOLUME
+    else amount
 
   def getNBT: NBTTagCompound =
     nbt

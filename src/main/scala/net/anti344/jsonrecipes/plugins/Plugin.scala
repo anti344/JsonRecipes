@@ -7,6 +7,12 @@
 
 package net.anti344.jsonrecipes.plugins
 
+import javax.script.{Invocable, ScriptEngineManager}
+import net.anti344.jsonrecipes.api.IRecipeHandler
+import net.anti344.jsonrecipes.impl.RecipeRegistry.doRegisterRecipeType
+import scala.reflect.{ClassTag, classTag}
+import scala.tools.nsc.interpreter.IMain
+
 trait Plugin
  extends DelayedInit{
 
@@ -15,6 +21,9 @@ trait Plugin
   def delayedInit(body: => Unit) =
     func = () => body
 
-  def execute() =
+  final def execute() =
     func()
+
+  final def register[T : ClassTag](tpe: String, handler: IRecipeHandler[T]) =
+    doRegisterRecipeType(tpe, classTag[T].runtimeClass, handler)
 }

@@ -7,13 +7,12 @@
 
 package net.anti344.jsonrecipes.plugins.minecraft
 
-import net.anti344.jsonrecipes.impl.RecipeRegistry.{doRegisterRecipeType => register}
 import net.anti344.jsonrecipes.plugins.Plugin
 
 object MinecraftPlugin
  extends Plugin{
-  register("shaped", classOf[JsonShapedRecipe], ShapedHandler)
-  register("shapeless", classOf[JsonShapelessRecipe], ShapelessHandler)
-  register("furnace", classOf[JsonFurnaceRecipe], FurnaceHandler)
-  register("fuel", classOf[JsonFuelRecipe], FuelHandler)
+  register[JsonShapedRecipe]("shaped", ShapedHandler)
+  register[JsonShapelessRecipe]("shapeless", ShapelessHandler)
+  register[JsonFurnaceRecipe]("furnace", FurnaceHandler)
+  register[JsonFuelRecipe]("fuel", FuelHandler)
 }

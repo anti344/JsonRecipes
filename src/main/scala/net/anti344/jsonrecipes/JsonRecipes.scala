@@ -23,7 +23,6 @@ import net.anti344.jsonrecipes.json._
 import cpw.mods.fml.common.event._
 import java.io.File
 
-
 @Mod(modid = "JsonRecipes",
      version = "@VERSION@",
      modLanguage = "scala",

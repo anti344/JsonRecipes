@@ -10,7 +10,6 @@ package net.anti344.jsonrecipes.network.packet
 import net.anti344.jsonrecipes.json.Parser
 import cpw.mods.fml.relauncher.Side
 import io.netty.buffer.ByteBuf
-import net.minecraft.item.ItemStack
 
 case class PacketRecipe(private var json: String)
  extends Packet{

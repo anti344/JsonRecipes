@@ -7,7 +7,7 @@
 
 package net.anti344.jsonrecipes.plugins.minecraft
 
-import net.anti344.jsonrecipes.api.IRecipeHandler
+import net.anti344.jsonrecipes.api.{IJsonItemStack, IRecipeHandler}
 import net.anti344.jsonrecipes.impl.JsonItemStack
 import net.minecraft.item.crafting.{CraftingManager, IRecipe}
 import net.minecraftforge.oredict.ShapelessOreRecipe
@@ -25,7 +25,7 @@ object ShapelessHandler
 
   def addRecipe(recipe: JsonShapelessRecipe): Boolean =
     if(recipe.output != null && recipe.input != null && recipe.output.exists){
-      val in = recipe.input.flatMap(i => Seq.fill(i.getCount)(i.copy(count = 1).getComponent))
+      val in = recipe.input.flatMap(i => Seq.fill(i.getCount)(i.getComponent))
       val _recipe = new ShapelessOreRecipe(recipe.output.getItemStack, in:_*)
       craftingRecipes.add(_recipe)
       recipeMap(recipe) = _recipe
@@ -43,4 +43,4 @@ object ShapelessHandler
     }
 }
 
-case class JsonShapelessRecipe(input: JList[JsonItemStack], output: JsonItemStack)
+case class JsonShapelessRecipe(input: JList[IJsonItemStack], output: JsonItemStack)

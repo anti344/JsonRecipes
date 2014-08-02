@@ -21,7 +21,7 @@ import net.minecraft.item.ItemStack
 object FurnaceHandler
  extends IRecipeHandler[JsonFurnaceRecipe]{
 
-  val recipeMap: MMap[JsonFurnaceRecipe, (Seq[ItemStack], ItemStack)] = MMap()
+  val recipes: MMap[JsonFurnaceRecipe, (Seq[ItemStack], ItemStack)] = MMap()
 
   private val smeltingMap: JMap[ItemStack, ItemStack] =
     FurnaceRecipes.smelting.getSmeltingList.asInstanceOf[JMap[ItemStack, ItemStack]]
@@ -43,18 +43,18 @@ object FurnaceHandler
       var in: Seq[ItemStack] = Seq()
       if(recipe.input.exists)
         in = Seq(recipe.input.getItemStack)
-      else if(recipe.input.oredict)
-        in = OreDictionary.getOres(recipe.input.item)
+      else if(recipe.input.isOredict)
+        in = OreDictionary.getOres(recipe.input.getName)
       else
         return false
-      recipeMap(recipe) = (in, out)
+      recipes(recipe) = (in, out)
       in.foreach(smeltingMap.put(_, out))
       true
     }else
       false
 
   def removeRecipe(recipe: JsonFurnaceRecipe): Boolean =
-    recipeMap.remove(recipe) match{
+    recipes.remove(recipe) match{
       case Some((in, out)) =>
         in.foreach(smeltingMap.remove(_))
         expMap.remove(out)

@@ -49,15 +49,14 @@ public interface IJsonItemStack{
     boolean exists();
 
     /**
-      * If {@link #isOredict} returns <code>true</code> then {@link #getName name}'ll be returned.
-      * Else it'll try to find Item for {@link #getName name} and if it exist - return {@link ItemStack}
-      * with all info from here assigned.
+      * If oredict or does not exist - returns {@link #getName}, {@link #getItemStack} otherwise.
       * @return Raw "component" of the stack
       */
     Object getComponent();
 
     /**
-      * @return if can - {@link #getComponent} casted to {@link ItemStack}, <code>null</code> otherwise.
+      * @return if item with given name actually exists returns new {@link ItemStack} with
+	  * all info from here assigned, <code>null</code> otherwise.
       */
     ItemStack getItemStack();
 }
