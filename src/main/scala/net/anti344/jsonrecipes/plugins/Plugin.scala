@@ -14,7 +14,7 @@ import scala.reflect.{ClassTag, classTag}
 trait Plugin
  extends DelayedInit{
 
-  val modid: String => String
+  val modid: String
 
   private var func: () => Unit = () => {}
 
