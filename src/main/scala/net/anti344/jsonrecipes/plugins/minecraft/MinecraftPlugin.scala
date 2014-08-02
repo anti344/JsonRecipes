@@ -11,6 +11,9 @@ import net.anti344.jsonrecipes.plugins.Plugin
 
 object MinecraftPlugin
  extends Plugin{
+
+  val modid: String = ""
+
   register[JsonShapedRecipe]("shaped", ShapedHandler)
   register[JsonShapelessRecipe]("shapeless", ShapelessHandler)
   register[JsonFurnaceRecipe]("furnace", FurnaceHandler)

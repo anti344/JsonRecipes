@@ -12,11 +12,21 @@ import ic2.api.recipe.{Recipes => IC2Recipes}
 
 object IC2Plugin
  extends Plugin{
-  register[JsonSimpleIC2MachineRecipe]("IC2-compressor", new SimpleIC2MachineHandler(IC2Recipes.compressor))
-  register[JsonSimpleIC2MachineRecipe]("IC2-macerator", new SimpleIC2MachineHandler(IC2Recipes.macerator))
-  register[JsonSimpleIC2MachineRecipe]("IC2-extractor", new SimpleIC2MachineHandler(IC2Recipes.extractor))
 
-  register[JsonSimpleIC2MachineRecipe]("IC2-extruder", new SimpleIC2MachineHandler(IC2Recipes.metalformerExtruding))
-  register[JsonSimpleIC2MachineRecipe]("IC2-cutter", new SimpleIC2MachineHandler(IC2Recipes.metalformerCutting))
-  register[JsonSimpleIC2MachineRecipe]("IC2-roller", new SimpleIC2MachineHandler(IC2Recipes.metalformerRolling))
+  val modid: String = "IC2-"
+
+  register[JsonSimpleIC2MachineRecipe]("compressor", new SimpleIC2MachineHandler(IC2Recipes.compressor))
+  register[JsonSimpleIC2MachineRecipe]("macerator", new SimpleIC2MachineHandler(IC2Recipes.macerator))
+  register[JsonSimpleIC2MachineRecipe]("extractor", new SimpleIC2MachineHandler(IC2Recipes.extractor))
+  register[JsonSimpleIC2MachineRecipe]("extruder", new SimpleIC2MachineHandler(IC2Recipes.metalformerExtruding))
+  register[JsonSimpleIC2MachineRecipe]("cutter", new SimpleIC2MachineHandler(IC2Recipes.metalformerCutting))
+  register[JsonSimpleIC2MachineRecipe]("roller", new SimpleIC2MachineHandler(IC2Recipes.metalformerRolling))
+
+//  register[JsonSimpleIC2MachineRecipe]("centrifuge", null)
+//  register[JsonMatterAmplifierRecipe]("washer", null)
+//  register[JsonSimpleIC2MachineRecipe]("blastfurance", null)
+
+  register[JsonMatterAmplifierRecipe]("amplifier", MatterAmplifierHandler)
+  register[JsonBottlerRecipe]("bottler", BottlerHandler)
+  register[JsonEnricherRecipe]("enricher", EnricherHandler)
 }

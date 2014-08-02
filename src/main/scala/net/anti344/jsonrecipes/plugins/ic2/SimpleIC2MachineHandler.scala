@@ -18,13 +18,7 @@ class SimpleIC2MachineHandler(machine: IMachineRecipeManager)
   val recipes: MMap[JsonSimpleIC2MachineRecipe, IRecipeInput] = MMap()
 
   def addRecipe(recipe: JsonSimpleIC2MachineRecipe): Boolean = {
-    val in =
-      if(recipe.input.isOredict)
-        new RecipeInputOreDict(recipe.input.getName, recipe.input.getCount, recipe.input.getMeta)
-      else if(recipe.input.exists)
-        new RecipeInputItemStack(recipe.input.getItemStack)
-      else
-        null
+    val in = convert(recipe.input)
     if(in != null && recipe.output.exists){
       machine.addRecipe(in, null, recipe.output.getItemStack)
       recipes(recipe) = in
