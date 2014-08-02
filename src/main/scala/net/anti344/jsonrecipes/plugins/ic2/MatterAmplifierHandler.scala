@@ -27,9 +27,14 @@ object MatterAmplifierHandler
       false
   }
 
-  def removeRecipe(recipe: JsonMatterAmplifierRecipe): Boolean = {
-    false
-  }
+  def removeRecipe(recipe: JsonMatterAmplifierRecipe): Boolean =
+    recipes.remove(recipe) match{
+      case Some(item) =>
+        Recipes.matterAmplifier.getRecipes.remove(item)
+        true
+      case _ =>
+        false
+    }
 }
 
 case class JsonMatterAmplifierRecipe(item: JsonItemStack, amplifier: Int)
