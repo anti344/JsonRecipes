@@ -21,7 +21,7 @@ object ReflectPluginLoader{
     plugins.foreach{e =>
       if(Loader.isModLoaded(e._1)){
         try{
-          Class.forName("net.anti344.customrecipes.plugins." + e._2 + "$", true, Loader.instance.getModClassLoader)
+          Class.forName("net.anti344.jsonrecipes.plugins." + e._2 + "$", true, Loader.instance.getModClassLoader)
             .getField("MODULE$").get(null) match{
             case plugin: Plugin =>
               plugin.execute()
