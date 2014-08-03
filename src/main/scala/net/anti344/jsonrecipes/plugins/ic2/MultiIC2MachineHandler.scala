@@ -13,9 +13,10 @@ import net.anti344.jsonrecipes.plugins.RecipeHandler
 import net.anti344.jsonrecipes.impl.JsonItemStack
 import scala.collection.mutable.{Map => MMap}
 import java.util.{List => JList}
+import scala.reflect.ClassTag
 import ic2.api.recipe._
 
-class MultiIC2MachineHandler[T <: MultiIC2MachineRecipe](machine: IMachineRecipeManager)
+class MultiIC2MachineHandler[T <: MultiIC2MachineRecipe : ClassTag](machine: IMachineRecipeManager)
  extends RecipeHandler[T]{
 
   val recipes: MMap[T, IRecipeInput] = MMap()
