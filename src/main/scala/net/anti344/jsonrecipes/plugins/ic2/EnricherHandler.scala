@@ -7,13 +7,13 @@
 
 package net.anti344.jsonrecipes.plugins.ic2
 
-import ic2.api.recipe._
-import net.anti344.jsonrecipes.api.IRecipeHandler
 import net.anti344.jsonrecipes.impl.{JsonFluidStack, JsonItemStack}
+import net.anti344.jsonrecipes.plugins.RecipeHandler
 import scala.collection.mutable.{Map => MMap}
+import ic2.api.recipe._
 
 object EnricherHandler
- extends IRecipeHandler[JsonEnricherRecipe]{
+ extends RecipeHandler[JsonEnricherRecipe]{
 
   val recipes: MMap[JsonEnricherRecipe, ICannerEnrichRecipeManager.Input] = MMap()
 

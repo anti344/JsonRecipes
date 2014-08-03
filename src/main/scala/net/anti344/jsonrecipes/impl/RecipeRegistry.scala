@@ -15,7 +15,7 @@ import net.anti344.jsonrecipes.handlers.Log
 import scala.collection.mutable.{Map => MMap}
 
 object RecipeRegistry
-  extends IRecipeRegistry{
+ extends IRecipeRegistry{
 
   val registry: MMap[String, (Class[_], IRecipeHandler[_])] = MMap().withDefaultValue(null)
 

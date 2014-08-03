@@ -9,15 +9,15 @@ package net.anti344.jsonrecipes.plugins.minecraft
 
 import cpw.mods.fml.common.IFuelHandler
 import cpw.mods.fml.common.registry.GameRegistry
-import net.anti344.jsonrecipes.api.IRecipeHandler
 import net.anti344.jsonrecipes.impl.JsonItemStack
+import net.anti344.jsonrecipes.plugins.RecipeHandler
 import net.minecraft.item.ItemStack
 import net.minecraftforge.oredict.OreDictionary
 
 import scala.collection.mutable.ArrayBuffer
 
 object FuelHandler
- extends IRecipeHandler[JsonFuelRecipe]
+ extends RecipeHandler[JsonFuelRecipe]
  with IFuelHandler{
 
   GameRegistry.registerFuelHandler(this)

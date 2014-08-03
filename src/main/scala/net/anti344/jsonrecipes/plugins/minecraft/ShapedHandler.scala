@@ -9,6 +9,7 @@ package net.anti344.jsonrecipes.plugins.minecraft
 
 import net.anti344.jsonrecipes.api.IRecipeHandler
 import net.anti344.jsonrecipes.impl.JsonItemStack
+import net.anti344.jsonrecipes.plugins.RecipeHandler
 import net.minecraft.item.crafting.{IRecipe, CraftingManager}
 import net.minecraftforge.oredict.ShapedOreRecipe
 import scala.collection.JavaConversions.asScalaBuffer
@@ -17,7 +18,7 @@ import scala.collection.mutable.{Map => MMap}
 import java.util.{HashMap => JMap, List => JList}
 
 object ShapedHandler
- extends IRecipeHandler[JsonShapedRecipe]{
+ extends RecipeHandler[JsonShapedRecipe]{
 
   val recipeMap: MMap[JsonShapedRecipe, ShapedOreRecipe] = MMap()
 

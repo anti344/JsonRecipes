@@ -14,8 +14,8 @@ object MinecraftPlugin
 
   val modid: String = ""
 
-  register[JsonShapedRecipe]("shaped", ShapedHandler)
-  register[JsonShapelessRecipe]("shapeless", ShapelessHandler)
-  register[JsonFurnaceRecipe]("furnace", FurnaceHandler)
-  register[JsonFuelRecipe]("fuel", FuelHandler)
+  register("shaped", ShapedHandler)
+  register("shapeless", ShapelessHandler)
+  register("furnace", FurnaceHandler)
+  register("fuel", FuelHandler)
 }

@@ -7,8 +7,8 @@
 
 package net.anti344.jsonrecipes.plugins.minecraft
 
+import net.anti344.jsonrecipes.plugins.RecipeHandler
 import cpw.mods.fml.relauncher.ReflectionHelper
-import net.anti344.jsonrecipes.api.IRecipeHandler
 import net.anti344.jsonrecipes.handlers.Log
 import net.anti344.jsonrecipes.impl.JsonItemStack
 import net.minecraft.item.crafting.FurnaceRecipes
@@ -19,7 +19,7 @@ import scala.collection.mutable.{Map => MMap}
 import net.minecraft.item.ItemStack
 
 object FurnaceHandler
- extends IRecipeHandler[JsonFurnaceRecipe]{
+ extends RecipeHandler[JsonFurnaceRecipe]{
 
   val recipes: MMap[JsonFurnaceRecipe, (Seq[ItemStack], ItemStack)] = MMap()
 

@@ -7,13 +7,13 @@
 
 package net.anti344.jsonrecipes.plugins.ic2
 
-import net.anti344.jsonrecipes.api.IRecipeHandler
+import net.anti344.jsonrecipes.plugins.RecipeHandler
 import net.anti344.jsonrecipes.impl.JsonItemStack
 import scala.collection.mutable.{Map => MMap}
 import ic2.api.recipe._
 
 class SimpleIC2MachineHandler(machine: IMachineRecipeManager)
- extends IRecipeHandler[JsonSimpleIC2MachineRecipe]{
+ extends RecipeHandler[JsonSimpleIC2MachineRecipe]{
 
   val recipes: MMap[JsonSimpleIC2MachineRecipe, IRecipeInput] = MMap()
 
