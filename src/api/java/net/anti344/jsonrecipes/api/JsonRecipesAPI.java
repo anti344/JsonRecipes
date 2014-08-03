@@ -24,7 +24,28 @@ public class JsonRecipesAPI {
       * Main JSON deserializer.
       * Knows how to deserialize {@link net.minecraft.nbt.NBTTagCompound NBTTagCompound},
       * {@link IJsonItemStack} and {@link IJsonFluidStack}.
-      * Also creates them .
+      * Also instantiates them.
+	  * Example: <code>
+	  *
+	  *     JsonRecipesAPI.deserializer.fromJson("...", MyJsonRecipe.class)
+	  *
+	  *     public static class MyJsonRecipe{
+	  *
+	  *     	public IJsonItemStack input;
+	  *     	public IJsonFluidStack output;
+	  *
+	  *         public MyJsonRecipe(IJsonItemStacl input, IJsonFluidStack output){
+	  *             this.in = input;
+	  *             this.out = output;
+	  *         }
+	  *     }
+	  * </code>
+	  * The {@link IJsonItemStack} and {@link IJsonFluidStack} are interfaces, but this deserealizer
+	  * returns instances of Json Recipes internal implementations of them.
+	  * Another example: <code>
+	  *     JsonRecipesAPI.deserializer.fromJson("{\"item\":\"axe_diamond\", \"count\":26}", JsonRecipesAPI.jsonItemStack)
+	  * </code>
+	  *
       * Gets it instance during pre-initilization of Json Recipes.
       */
     public static Gson deserializer;

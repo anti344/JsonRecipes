@@ -7,7 +7,6 @@
 
 package net.anti344.jsonrecipes.json
 
-import com.google.gson.reflect.TypeToken
 import net.anti344.jsonrecipes.api.{IJsonItemStack, IJsonFluidStack}
 import net.anti344.jsonrecipes.impl.{JsonItemStack, JsonFluidStack}
 import net.minecraft.nbt.{NBTBase, JsonToNBT}
@@ -16,30 +15,42 @@ import com.google.gson._
 
 object Deserializers{
 
-  val default: Gson = new Gson
-
   val main: Gson = new GsonBuilder()
-    .registerTypeHierarchyAdapter(classOf[IJsonItemStack], JsonItemStackDeserilizer)
-    .registerTypeHierarchyAdapter(classOf[IJsonFluidStack], JsonFluidStackDeserilizer)
+    .registerTypeHierarchyAdapter(classOf[IJsonItemStack], JsonItemStackDeserializer)
+    .registerTypeHierarchyAdapter(classOf[IJsonFluidStack], JsonFluidStackDeserializer)
     .registerTypeHierarchyAdapter(classOf[NBTBase], NBTJsonDeserializer)
     .create()
 
-  private val withNBT: Gson = new GsonBuilder()
+  private val withoutShortcuts: Gson = new GsonBuilder()
     .registerTypeHierarchyAdapter(classOf[NBTBase], NBTJsonDeserializer)
+    .registerTypeAdapter(classOf[IJsonItemStack], JsonItemStackCreator)
+    .registerTypeAdapter(classOf[IJsonFluidStack], JsonFluidStackCreator)
     .create()
 
-  private object NBTJsonDeserializer
+  object NBTJsonDeserializer
    extends JsonDeserializer[NBTBase]{
 
-    @throws[JsonParseException]
     def deserialize(json: JsonElement, tpe: Type, ctx: JsonDeserializationContext): NBTBase =
       JsonToNBT.func_150315_a(json.toString.replaceAll("\"", ""))
   }
 
-  private object JsonItemStackDeserilizer
+  object JsonItemStackCreator
+   extends InstanceCreator[IJsonItemStack]{
+
+    def createInstance(tpe: Type): IJsonItemStack =
+      new JsonItemStack(null, false, 0, 0, null)
+  }
+
+  object JsonFluidStackCreator
+    extends InstanceCreator[IJsonFluidStack]{
+
+    def createInstance(tpe: Type): IJsonFluidStack =
+      new JsonFluidStack(null, 0, null)
+  }
+
+  object JsonItemStackDeserializer
    extends JsonDeserializer[IJsonItemStack]{
 
-    @throws[JsonParseException]
     def deserialize(json: JsonElement, tpe: Type, ctx: JsonDeserializationContext): IJsonItemStack =
       json match{
         case prim: JsonPrimitive =>
@@ -49,14 +60,13 @@ object Deserializers{
           else
             new JsonItemStack(str, false, 1, 0, null)
         case _ =>
-          withNBT.fromJson(json, tpe)
+          withoutShortcuts.fromJson(json, tpe)
       }
   }
 
-  private object JsonFluidStackDeserilizer
+  object JsonFluidStackDeserializer
    extends JsonDeserializer[IJsonFluidStack]{
 
-    @throws[JsonParseException]
     def deserialize(json: JsonElement, tpe: Type, ctx: JsonDeserializationContext): IJsonFluidStack =
       json match{
         case prim: JsonPrimitive =>
@@ -66,7 +76,7 @@ object Deserializers{
           else
             new JsonFluidStack(str, 0, null)
         case _ =>
-          withNBT.fromJson(json, tpe)
+          withoutShortcuts.fromJson(json, tpe)
       }
   }
 }
