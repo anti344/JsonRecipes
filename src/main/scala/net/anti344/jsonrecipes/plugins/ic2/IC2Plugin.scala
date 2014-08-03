@@ -22,9 +22,9 @@ object IC2Plugin
   register("cutter", new SimpleIC2MachineHandler(IC2Recipes.metalformerCutting))
   register("roller", new SimpleIC2MachineHandler(IC2Recipes.metalformerRolling))
 
-//  register("centrifuge", null)
-//  register("washer", null)
-//  register("blastfurance", null)
+  register("centrifuge", CentrifugeHandler)
+  register("washer", WasherHandler)
+  register("blastfurance", new MultiIC2MachineHandler[JsonMultiIC2MachineRecipe](IC2Recipes.blastfurance))
 
   register("amplifier", MatterAmplifierHandler)
   register("bottler", BottlerHandler)
