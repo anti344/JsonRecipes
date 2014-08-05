@@ -9,6 +9,7 @@ jrecipes.error.aliases=Failed to load aliases file.
 jrecipes.command.reload.usage=/jrecipes reload
 jrecipes.command.reload.success=Recipe list was successfully reloaded.
 jrecipes.command.reload.failture=Some of the recipes wasn't loaded properly.
+jrecipes.command.reload.failture.full=You can see full error with config option or in logs.
 
 jrecipes.config=Json Recipes Configuration
 jrecipes.config.checker=Version Check

@@ -44,4 +44,7 @@ object MessageHandler {
 
   implicit def str2chat(str: String): IChatComponent =
     new ChatComponentTranslation(str)
+
+  implicit def str2chat_args(t: (String, Seq[AnyRef])): IChatComponent =
+    new ChatComponentTranslation(t._1, t._2:_*)
 }

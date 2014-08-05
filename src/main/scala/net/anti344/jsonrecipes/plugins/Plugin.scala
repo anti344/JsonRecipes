@@ -23,5 +23,5 @@ trait Plugin
     func()
 
   final def register(tpe: String, handler: RecipeHandler[_]) =
-    doRegisterRecipeType(modid + tpe, handler.getRecipeClass, handler)
+    doRegisterRecipeType(if(modid != null)s"$modid-$tpe" else tpe, handler.getRecipeClass, handler)
 }

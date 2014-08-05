@@ -7,9 +7,10 @@
 
 package net.anti344.jsonrecipes.network
 
+import net.anti344.jsonrecipes.handlers.MessageHandler.str2chat
+import net.anti344.jsonrecipes.config.Config
 import net.anti344.jsonrecipes.json.Parser
 import net.minecraft.command._
-import net.minecraft.util.ChatComponentTranslation
 
 object JsonRecipesCommand
  extends CommandBase{
@@ -18,9 +19,12 @@ object JsonRecipesCommand
     args match{
       case Array("reload") =>
         if(Parser.load())
-          ics.addChatMessage(new ChatComponentTranslation("jrecipes.command.reload.success"))
-        else
-          ics.addChatMessage(new ChatComponentTranslation("jrecipes.command.reload.failture"))
+          ics.addChatMessage("jrecipes.command.reload.success")
+        else{
+          ics.addChatMessage("jrecipes.command.reload.failture")
+          if(!Config.errorOutput.getBoolean)
+            ics.addChatMessage("jrecipes.command.reload.failture.full")
+        }
       case _ =>
         throw new WrongUsageException("jrecipes.command.reload.usage")
     }

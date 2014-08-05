@@ -12,7 +12,7 @@ import net.anti344.jsonrecipes.plugins.Plugin
 object MinecraftPlugin
  extends Plugin{
 
-  val modid: String = ""
+  val modid: String = null
 
   register("shaped", ShapedHandler)
   register("shapeless", ShapelessHandler)
