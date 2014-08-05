@@ -26,14 +26,14 @@ object JsonRecipesCommand
             ics.addChatMessage("jrecipes.command.reload.failture.full")
         }
       case _ =>
-        throw new WrongUsageException("jrecipes.command.reload.usage")
+        throw new WrongUsageException(getCommandUsage(ics))
     }
 
   def getCommandName: String =
     "jrecipes"
 
   def getCommandUsage(ics: ICommandSender): String =
-    "jrecipes.reload.usage"
+    "jrecipes.command.reload.usage"
 
   override def getRequiredPermissionLevel: Int =
     2
