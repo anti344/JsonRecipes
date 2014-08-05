@@ -65,7 +65,7 @@ object JsonRecipes{
   @EventHandler
   def postInit(e: FMLPostInitializationEvent) = {
     ReflectPluginLoader.loadPlugins()
-    MinecraftPlugin.execute()
+    MinecraftPlugin.execute(null)
     Log.trace("PostInit state complete.")
   }
 

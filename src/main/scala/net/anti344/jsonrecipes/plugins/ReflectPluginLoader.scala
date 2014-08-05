@@ -24,7 +24,7 @@ object ReflectPluginLoader{
           Class.forName("net.anti344.jsonrecipes.plugins." + e._2 + "$", true, Loader.instance.getModClassLoader)
             .getField("MODULE$").get(null) match{
             case plugin: Plugin =>
-              plugin.execute()
+              plugin.execute(e._1)
             case _ =>
           }
         }catch{

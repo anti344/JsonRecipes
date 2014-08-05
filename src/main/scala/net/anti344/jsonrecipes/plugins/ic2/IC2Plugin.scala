@@ -12,9 +12,6 @@ import ic2.api.recipe.{Recipes => IC2Recipes}
 
 object IC2Plugin
  extends Plugin{
-
-  val modid: String = "IC2"
-
   register("compressor", new SimpleIC2MachineHandler(IC2Recipes.compressor))
   register("macerator", new SimpleIC2MachineHandler(IC2Recipes.macerator))
   register("extractor", new SimpleIC2MachineHandler(IC2Recipes.extractor))
@@ -22,11 +19,9 @@ object IC2Plugin
   register("cutter", new SimpleIC2MachineHandler(IC2Recipes.metalformerCutting))
   register("roller", new SimpleIC2MachineHandler(IC2Recipes.metalformerRolling))
   register("blockcutter", new SimpleIC2MachineHandler(IC2Recipes.blockcutter))
-
+  register("blastfurnace", new MultiIC2MachineHandler[JsonMultiIC2MachineRecipe](IC2Recipes.blastfurance))
   register("centrifuge", CentrifugeHandler)
   register("washer", WasherHandler)
-  register("blastfurnace", new MultiIC2MachineHandler[JsonMultiIC2MachineRecipe](IC2Recipes.blastfurance))
-
   register("amplifier", MatterAmplifierHandler)
   register("bottler", BottlerHandler)
   register("enricher", EnricherHandler)
