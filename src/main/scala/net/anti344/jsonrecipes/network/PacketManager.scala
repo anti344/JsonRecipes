@@ -19,9 +19,10 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel._
 
 object PacketManager{
-
-  registerPacket[PacketRecipe]
-  registerPacket[PacketRemoveRecipes]
+  {
+    registerPacket[PacketRecipe]
+    registerPacket[PacketRemoveRecipes]
+  }
 
   private val target = FMLOutboundHandler.FML_MESSAGETARGET
   private val args = FMLOutboundHandler.FML_MESSAGETARGETARGS

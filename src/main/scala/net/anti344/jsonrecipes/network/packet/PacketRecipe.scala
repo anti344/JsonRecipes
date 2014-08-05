@@ -11,7 +11,7 @@ import net.anti344.jsonrecipes.json.Parser
 import cpw.mods.fml.relauncher.Side
 import io.netty.buffer.ByteBuf
 
-case class PacketRecipe(private var json: String)
+class PacketRecipe(private var json: String)
  extends Packet{
 
   def this() =
