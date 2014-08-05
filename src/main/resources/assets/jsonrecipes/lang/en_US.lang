@@ -1,4 +1,4 @@
-jrecipes.checker.msg=Version %s of Json Recipes is available for Minecraft %s!
+jrecipes.checker.msg=Json Recipes %s is available for Minecraft %s!
 
 jrecipes.error.type=Type '%s' does not exist! All recipes with this type skipped.
 jrecipes.error.remove=Failed to remove dynamic recipes with type '%s'.
@@ -6,9 +6,9 @@ jrecipes.error.load=Failed to load recipe with type '%s'.
 jrecipes.error.remove=Failed to remove recipe with type '%s'.
 jrecipes.error.aliases=Failed to load aliases file.
 
-jrecipes.reload.usage=/reloadRecipes
-jrecipes.reload.success=Recipe list was successfully reloaded.
-jrecipes.reload.failture=Some of the recipes wasn't loaded properly.
+jrecipes.command.reload.usage=/jrecipes reload
+jrecipes.command.reload.success=Recipe list was successfully reloaded.
+jrecipes.command.reload.failture=Some of the recipes wasn't loaded properly.
 
 jrecipes.config=Json Recipes Configuration
 jrecipes.config.checker=Version Check

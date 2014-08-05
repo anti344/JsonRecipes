@@ -13,7 +13,7 @@ import cpw.mods.fml.common.event.FMLInterModComms.IMCEvent
 import net.anti344.jsonrecipes.api.JsonRecipesAPI
 import cpw.mods.fml.relauncher.FMLInjectionData
 import cpw.mods.fml.common.{Mod, FMLCommonHandler}
-import net.anti344.jsonrecipes.network.{PacketManager, ReloadRecipesCommand}
+import net.anti344.jsonrecipes.network.{PacketManager, JsonRecipesCommand}
 import net.anti344.jsonrecipes.impl.{RecipeRegistry, JsonItemStack, JsonFluidStack}
 import net.anti344.jsonrecipes.plugins.minecraft.MinecraftPlugin
 import net.anti344.jsonrecipes.plugins.ReflectPluginLoader
@@ -71,7 +71,7 @@ object JsonRecipes{
 
   @EventHandler
   def serverStarting(e: FMLServerStartingEvent) = {
-    e.registerServerCommand(ReloadRecipesCommand)
+    e.registerServerCommand(JsonRecipesCommand)
     Parser.load()
   }
 
